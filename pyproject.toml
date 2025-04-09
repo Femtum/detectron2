@@ -4,6 +4,55 @@ requires = [
     "wheel",
     "torch>=2.6.0,<3.0.0",
     "torchvision>=0.21.0,<0.22.0",
-    "ninja2",
 ]
-build-backend = "setuptools.build_meta:__legacy__"
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "detectron2"
+version = "2.0.0" # Replace with dynamic versioning if needed
+description = "Detectron2 is FAIR's next-generation research platform for object detection and segmentation."
+authors = [{ name = "FAIR" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "Pillow>=7.1",
+    "matplotlib",
+    "pycocotools>=2.0.2",
+    "termcolor>=1.1",
+    "yacs>=0.1.8",
+    "tabulate",
+    "cloudpickle",
+    "tqdm>4.29.0",
+    "tensorboard",
+    "fvcore>=0.1.5,<0.1.6",
+    "iopath>=0.1.7,<0.1.10",
+    "dataclasses; python_version<'3.7'",
+    "omegaconf>=2.1,<2.4",
+    "hydra-core>=1.1",
+    "black",
+    "packaging",
+    "opencv-python (>=4.11.0.86,<5.0.0.0)",
+    "torch (>=2.6.0,<3.0.0)",
+    "torchvision (>=0.21.0,<0.22.0)",
+]
+
+[project.optional-dependencies]
+all = [
+    "fairscale",
+    "timm",
+    "scipy>1.5.1",
+    "shapely",
+    "pygments>=2.2",
+    "psutil",
+    "panopticapi @ https://github.com/cocodataset/panopticapi/archive/master.zip",
+]
+dev = [
+    "flake8==3.8.1",
+    "isort==4.3.21",
+    "flake8-bugbear",
+    "flake8-comprehensions",
+    "black==22.3.0",
+]
+
+[tool.setuptools]
+packages = { find = { exclude = ["configs", "tests*"] } }
